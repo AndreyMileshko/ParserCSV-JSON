@@ -34,12 +34,12 @@ public class ParserXML extends Parsers {
             Node node_ = nodeList.item(i);
             if (Node.ELEMENT_NODE == node_.getNodeType()) {
                 Element element = (Element) node_;
-                String[] elementSplit = element.getTextContent().split("\n");
-                Employee employee = new Employee(Integer.parseInt(elementSplit[1].trim()),
-                        elementSplit[2].trim(),
-                        elementSplit[3].trim(),
-                        elementSplit[4].trim(),
-                        Integer.parseInt(elementSplit[5].trim()));
+                Employee employee = new Employee(
+                        Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent()),
+                        element.getElementsByTagName("firstName").item(0).getTextContent(),
+                        element.getElementsByTagName("lastName").item(0).getTextContent(),
+                        element.getElementsByTagName("country").item(0).getTextContent(),
+                        Integer.parseInt(element.getElementsByTagName("age").item(0).getTextContent()));
                 result.add(employee);
             }
         }
